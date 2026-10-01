@@ -1,0 +1,33 @@
+{
+  "schema": "crowsi://control/enforcement-receipt/v2",
+  "receipt_id": "receipt.0d3094bc1beb9a6c5ea6dea8f8bd7261",
+  "command_jti": "jti.command.v2.1",
+  "command_digest": "sha256:0d3094bc1beb9a6c5ea6dea8f8bd72615dda1b6a9beae7d5b10235ddffbf0d04",
+  "security_domain": "customer-hat",
+  "deployment_id": "deployment.production.1",
+  "incident_id": "incident.1",
+  "target_id": "incus://project/default/instance/worker-a",
+  "release_reservation_id": "release-reservation.1",
+  "fence_epoch": 1,
+  "binding": {
+    "audience": "crowsi-enforcer-incus",
+    "resource": "incus://project/default/instance/worker-a",
+    "action": "quarantine",
+    "purpose": "incident-containment",
+    "channel": "emergency-console"
+  },
+  "provider": "crowsi-enforcer-incus",
+  "outcome": "applied",
+  "authorization_consumed": true,
+  "applied_at": "2026-07-29T00:02:01.000Z",
+  "expected_resource_version": "incus-etag-7",
+  "resulting_resource_version": "rv:crowsi-enforcer-incus:1",
+  "residual_exposures": [],
+  "evidence_digest": "sha256:4eacf3d64b3236ed1c0f5db6d7c6f4df93258c56d0fc8a5190805c63c43cfcee",
+  "signed": {
+    "algorithm": "ed25519",
+    "key_id": "receipt.fixture.1",
+    "digest": "sha256:ee9f1563b561fc990282ab2b85e6ee7f82e474ef152b6ca9a60465a39523c251",
+    "signature": "laJh4WI9PyAQZ4wtmwcu9BR0ok8gmGo-NJj-7oWKSMb3tJBDlGZqjRpez1qN-tGftIpKqeqiKEPeXx-acknFDg"
+  }
+}

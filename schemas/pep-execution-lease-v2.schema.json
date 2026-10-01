@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "crowsi://control/pep-execution-lease/v2",
+  "title": "Crowsi PEP Execution Lease v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "reservation_id", "command", "command_digest", "reserved_at"
+  ],
+  "properties": {
+    "schema": { "const": "crowsi://control/pep-execution-lease/v2" },
+    "reservation_id": {
+      "type": "string", "pattern": "^[a-z][a-z0-9._:-]{0,127}$"
+    },
+    "command": { "$ref": "crowsi://control/isolation-command/v2" },
+    "command_digest": {
+      "type": "string", "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "reserved_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$"
+    }
+  }
+}

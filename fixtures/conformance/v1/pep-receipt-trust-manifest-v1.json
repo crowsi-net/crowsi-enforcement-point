@@ -1,0 +1,19 @@
+{
+  "schema": "crowsi://enforcement-point/pep-receipt-trust-manifest/v1",
+  "manifest_id": "crowsi-pep-receipt-conformance.1",
+  "intended_use": "conformance-only",
+  "security_domain": "customer-hat",
+  "deployment_id": "deployment.production.1",
+  "provider": "crowsi-enforcer-incus",
+  "canonical_profile": "crowsi-control-canonical-v1",
+  "receipt_schema": "crowsi://control/enforcement-receipt/v2",
+  "receipt_verifier": {
+    "algorithm": "ed25519",
+    "key_id": "receipt.fixture.1",
+    "role": "enforcement-receipt",
+    "scope_type": "provider",
+    "scope_value": "crowsi-enforcer-incus",
+    "public_key_encoding": "base64url-no-pad",
+    "public_key": "E5j2LG0aRXxRumpLXz29L2n8qTIWIY3ImX5Ba9F9k8o"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "crowsi://control/enforcement-receipt/v2",
+  "receipt_id": "receipt.v2.sample",
+  "command_jti": "jti.command.v2.sample",
+  "command_digest": "sha256:61b5d2b62d62e8d780afae31a150d51b560c42d833a0437f18b497f2d2e27164",
+  "security_domain": "customer-sample",
+  "deployment_id": "deployment.sample.1",
+  "incident_id": "incident.sample.1",
+  "target_id": "incus://project/default/instance/worker-a",
+  "release_reservation_id": "release-reservation.sample.1",
+  "fence_epoch": 9,
+  "binding": {
+    "audience": "crowsi-enforcer-incus",
+    "resource": "incus://project/default/instance/worker-a",
+    "action": "quarantine",
+    "purpose": "incident-containment",
+    "channel": "emergency-console"
+  },
+  "provider": "crowsi-enforcer-incus",
+  "outcome": "applied",
+  "authorization_consumed": true,
+  "applied_at": "2026-07-29T00:02:00.000Z",
+  "expected_resource_version": "incus-etag-7",
+  "resulting_resource_version": "incus-etag-8",
+  "residual_exposures": [],
+  "evidence_digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "signed": {
+    "algorithm": "ed25519",
+    "key_id": "receipt.sample.1",
+    "digest": "sha256:6789ed811dbe127350a4de89f4765eedb396c1b7779ddb5f46f55d4c7f47c680",
+    "signature": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  }
+}
