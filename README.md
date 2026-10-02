@@ -1,8 +1,27 @@
-# Crowsi Enforcement Point
+# crowsi-enforcement-point
 
-This crate is the fail-closed provider enforcement boundary for Crowsi. It
-accepts a PA-issued execution lease, verifies its command, consumes the
-authorization at the provider boundary, and returns a signed receipt.
+Verify a bounded execution authorization and retain evidence of its consumption.
+
+## What you can do
+
+- Reject expired, mismatched or replayed authorizations.
+- Produce a signed execution receipt through the configured interface.
+
+## Current scope
+
+Execution adapters and signing custody must be configured. A receipt alone is not independent proof of an external effect.
+
+Package distribution is not activated by this documentation. Use the checked-in source and the declared dependency versions; published availability must be verified separately.
+
+## Getting started
+
+Install Rust 1.97 or newer and make the declared dependencies available. Use the configured private registry when a dependency is not distributed publicly. Run from this repository:
+
+```sh
+cargo test --locked
+```
+
+## Examples and interface details
 
 ## Wire contract
 
@@ -36,46 +55,10 @@ software private-key constructor. Command and receipt roles must use distinct
 key identifiers and distinct public key material. A lease is accepted only
 when its reservation, embedded command, and command digest agree.
 
-## Provider boundary
+## Documentation and source
 
-Supported adapter kinds share one port:
+[Interface reference](docs/interface-reference.md)
 
-- host controls;
-- host firewall controls;
-- cloud-provider controls;
-- optional Incus controls.
+[Usage guide](docs/getting-started.md)
 
-A valid greater fence is durably consumed before provider resource-version
-comparison. A resource-version conflict is therefore a rejected operation that
-still advances the fence; neither a retry nor a restart can reuse that fence.
-The command JTI and reservation provide replay-safe receipt recovery.
-
-The bundled `MemoryProvider` and `SqliteProvider` are conformance adapters.
-They never access a host, firewall, cloud API, or Incus socket and are not
-production adapters. A real adapter must implement `EnforcementAdapter` while
-preserving exact resource binding, durable monotonic fencing, provider-native
-CAS, and idempotency.
-
-Production execution time comes from the PEP process clock; callers cannot
-submit an `applied_at` value. Fixed-time execution exists only in debug/test
-builds. The trusted time is durably watermarked in the PEP ledger, so host
-clock rollback is rejected after process restart. The CLI sample contains its
-own isolated deterministic signing keys and never exports them through the
-library API.
-
-An `applied` receipt proves what this PEP attempted and recorded. It does not
-prove containment. `crowsi-independent-verifier` must read the resulting state
-through an independently trusted sensor.
-
-The local conformance sample performs no network access:
-
-```bash
-cargo run --offline --quiet -- sample
-```
-
-## Verification
-
-```bash
-# WONDERLAND_ROOT is the workspace checkout root.
-"$WONDERLAND_ROOT/bin/verify-repositories" --rust --tier standard
-```
+[Schemas](schemas) · [Implementation and public interfaces](src) · [Verification cases](tests) · [Contributing](CONTRIBUTING.md) · [Security reporting](SECURITY.md) · [License](LICENSE) · [Attribution notices](NOTICE)
